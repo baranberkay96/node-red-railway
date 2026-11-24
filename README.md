@@ -54,7 +54,7 @@ A fresh Node-RED has no editor login, which is dangerous on a public URL: anyone
 
 **Versions.** The image is pinned in `services/node-red/Dockerfile` (`NODE_RED_IMAGE`, tag and digest). To upgrade, use a newer release tag and digest and redeploy; read the release notes for breaking changes between major versions.
 
-**Resources.** About 0.1-0.2 GB RAM idle with a few flows. Runs on Trial, Hobby and Pro.
+**Resources.** Measured: about 0.07-0.16 GB RAM idle with a small flow. Runs on Trial, Hobby and Pro.
 
 ### Why Deploy Node-RED on Railway?
 

@@ -35,7 +35,13 @@ Market (2026-11): leader "Node-RED" 130 active builds a third-party repo with an
 
 ## Resources
 
-See "Measured" below. Prices: RAM $10/GB-month, vCPU $20/month, volume $0.15/GB-month. Minimum plan: Trial.
+Measured on Railway 2026-11-24 (idle with a small HTTP flow):
+
+| Service | RAM | CPU |
+|---|---|---|
+| Node-RED | 0.07-0.16 GB | ~0 |
+
+≈ **$1-2/month** plus the volume. Prices: RAM $10/GB-month, vCPU $20/month, volume $0.15/GB-month. Minimum plan: Trial.
 
 ## Verification checklist
 
@@ -44,6 +50,8 @@ See "Measured" below. Prices: RAM $10/GB-month, vCPU $20/month, volume $0.15/GB-
 3. Deploy a flow (inject → HTTP-in/response) through the admin API; HTTP endpoint answers.
 4. Redeploy: flow still there (volume); credentials readable.
 5. `NODE_RED_PASSWORD=abc` → SUCCESS with warning; login with `abc` refused.
+
+Tested 2026-11-24 on Railway: all five. Log: `volume /data handed to the node-red user`, `Started flows`. Flow deployed via `POST /flows` (token from `/auth/token`), HTTP endpoint 200, `file` context counter survived two redeploys (n=1→3); a new valid password works after the locked boot.
 
 ## Open questions
 
