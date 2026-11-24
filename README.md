@@ -1,5 +1,7 @@
 # Deploy and Host Node-RED with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/node-red-50-low-code-automation-login-pe?referralCode=20H68q)
+
 Node-RED is a low-code programming tool for wiring together APIs, devices and online services in a browser-based flow editor. This template runs Node-RED 5.0 with an admin login that is always on, a persistent volume for flows, credentials and installed nodes, and safe defaults for a public URL.
 
 ## About Hosting Node-RED
