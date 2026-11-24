@@ -1,0 +1,89 @@
+{
+  "name": "Node-RED 5.0 Low-Code Automation (Login, Persistent Volume)",
+  "idSeed": "Node-RED 5.0 Low-Code Automation (Login, Persistent Volume)",
+  "description": "Flow-based automation editor with admin login, saved flows and nodes.",
+  "category": "Automation",
+  "tags": [
+    "node-red",
+    "low-code",
+    "automation",
+    "iot",
+    "mqtt",
+    "workflows",
+    "self-hosted"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/node-red.svg",
+  "upstream": {
+    "repo": "node-red/node-red",
+    "version": "5.0.10",
+    "license": "Apache-2.0",
+    "images": {
+      "node-red": "nodered/node-red:5.0.10@sha256:3622786c15b6f57f61bf1d0ece59d06a18b742c5c8955f588d189b6bee8dc97d (2026-11-17)"
+    },
+    "checked": "2026-11-24"
+  },
+  "services": {
+    "Node-RED": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/node-red.svg",
+      "source": {
+        "repo": "baranberkay96/node-red-railway",
+        "rootDirectory": "/services/node-red"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/",
+      "healthcheckTimeout": 300,
+      "restartPolicyType": "ALWAYS",
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 1880,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/data"
+      },
+      "variables": {
+        "PORT": {
+          "defaultValue": "1880",
+          "description": "Port Node-RED listens on.",
+          "required": false
+        },
+        "NODE_RED_USERNAME": {
+          "defaultValue": "admin",
+          "description": "Editor login user name.",
+          "required": false
+        },
+        "NODE_RED_PASSWORD": {
+          "defaultValue": "${{secret(24, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "Editor login password (8-128 characters). Hashed with bcrypt at every start.",
+          "required": false
+        },
+        "NODE_RED_CREDENTIAL_SECRET": {
+          "defaultValue": "${{secret(48, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "Encrypts credentials stored in flows. Never change it after the first start.",
+          "required": false
+        },
+        "NODE_RED_ENABLE_PROJECTS": {
+          "defaultValue": "false",
+          "description": "Projects (git-based flow versioning). Off by default.",
+          "required": false
+        },
+        "NODE_RED_HTTP_NODE_AUTH": {
+          "defaultValue": "false",
+          "description": "true = HTTP-in endpoints and dashboards also require the editor login.",
+          "required": false
+        },
+        "NODE_RED_LOG_LEVEL": {
+          "defaultValue": "info",
+          "description": "Log level: fatal, error, warn, info, debug, trace.",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "UTC",
+          "description": "Time zone for schedules (inject nodes) and logs.",
+          "required": false
+        }
+      }
+    }
+  }
+}
